@@ -23,4 +23,6 @@ app.use('/muscleImages', muscleImageRouter);
 app.use((_, res) => {
   res.status(404).json({ success: false, token: '', message: '요청이 잘못됨' });
 });
-app.listen(port);
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});
