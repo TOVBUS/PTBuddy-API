@@ -11,16 +11,15 @@ let sequelize = new Sequelize(
 );
 
 const User = require('./user');
-const Sale = require('./sale');
 
 db.User = User;
-db.Sale = Sale;
+
 
 User.init(sequelize);
-Sale.init(sequelize);
 
-User.associate(db);
-Sale.associate(db);
+
+// User.associate(db);
+
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
