@@ -9,7 +9,7 @@ const app = express();
 
 //const memberRouter = require('./routers/memberRouter');
 const muscleImageRouter = require('./routers/muscleImageRouter');
-const openai = require('./routers/openai');
+const openai = require('./routers/openaiRouter');
 
 app.use(morgan('dev'));
 app.use(express.json());
