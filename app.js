@@ -9,6 +9,7 @@ const app = express();
 
 //const memberRouter = require('./routers/memberRouter');
 const muscleImageRouter = require('./routers/muscleImageRouter');
+const openai = require('./routers/openaiRouter');
 
 app.use(morgan('dev'));
 app.use(express.json());
@@ -19,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 // app.use('/members', memberRouter);
 // app.use('/images', imageRouter);
 app.use('/muscleImages', muscleImageRouter);
+app.use('/ai', openai);
 
 app.use((_, res) => {
   res.status(404).json({ success: false, token: '', message: '요청이 잘못됨' });
