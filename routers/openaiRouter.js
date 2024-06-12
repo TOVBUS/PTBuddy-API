@@ -42,22 +42,82 @@ router.post('/activity-routine', async (req, res) => {
   - 주 운동 장소: ${activityGoal.activityPlace}
   - 선호 운동: ${activityGoal.preferenceActivity}
   
-  위 사용자 정보를 바탕으로 7일간의 목표 기간 동안 매주 단위로 운동 루틴을 아래 예시대로 작성해주세요.
-  
+  위 사용자 정보를 바탕으로 7일간의 목표 기간 동안 매주 단위로 운동 루틴을 아래 예시대로 작성해줘. 내가 가진 운동 리스트 안에서 루틴을 추천해줘야 해. 운동의 이름은 "영어 운동 타이틀:한글 이름 타이틀" 형식으로 제공해줘.
+  가능한 한 응답 형식이 일관되도록 주의해줘. 예를 들어, '홍길동님' 또는 '토브님'과 같은 사용자의 이름이 바뀌어도 아래 예시 형식을 유지해줘.
+  아래의 JSON을 참고해서 사용자에게 맞는 7일간의 운동 루틴을 JSON 형식으로 생성해줘.
+
   예시 출력 형식:
-  1주차 운동 루틴:
-  - **월요일: 상체 근력 훈련(가슴, 어깨, 삼두)** \n - 벤치프레스: (6kg 10회) 4세트  
-  - 화요일: ...
-  - 수요일: ...
-  - 목요일: ...
-  - 금요일: ...
-  - 토요일: ...
-  - 일요일: ...
+
+  {
+    "1주차 운동 루틴": [
+      {
+        "요일": "월요일",
+        "훈련 종류": "상체 근력 훈련 (가슴, 어깨, 삼두)",
+        "운동": [
+          {
+            "영어 운동 타이틀": "?",
+            "한글 이름 타이틀": "?",
+            "횟수": "?회",
+            "세트": "3세트",
+            "무게(kg)": null,
+            "시간(초)": null
+          },
+          {
+            "영어 운동 타이틀": "?",
+            "한글 이름 타이틀": "?",
+            "횟수": "?회",
+            "세트": "3세트",
+            "무게(kg)": 10kg,
+            "시간(초)": null
+          },
+          {
+            "영어 운동 타이틀": "?",
+            "한글 이름 타이틀": "?",
+            "횟수": "?회",
+            "세트": "3세트",
+            "무게(kg)": null,
+            "시간(초)": 50초
+          }
+        ]
+      },
+      {
+        "요일": "화요일",
+        "훈련 종류": "",
+        "운동": []
+      },
+      {
+        "요일": "수요일",
+        "훈련 종류": "하체 근력 훈련 (하체, 둔근, 허벅지)",
+        "운동": []
+      },
+      {
+        "요일": "목요일",
+        "훈련 종류": "",
+        "운동": []
+      },
+      {
+        "요일": "금요일",
+        "훈련 종류": "복근 및 코어 강화",
+        "운동": []
+      },
+      {
+        "요일": "토요일",
+        "훈련 종류": "",
+        "운동": []
+      },
+      {
+        "요일": "일요일",
+        "훈련 종류": "",
+        "운동": []
+      }
+    ]
+  }
+
   `
 
   try {
     const result = await client.getChatCompletions(deploymentId, [
-      { role: "system", content: "You are an AI assistant that helps people find information." },
+      { role: "system", content: "You are a highly experienced personal health trainer with over 10 years of professional experience. You have managed over 100,000 members, and have a vast database of their health and fitness data. You know the most efficient exercise methods and dietary plans. You hold a PhD in Physical Therapy and Nutrition, and you stay up-to-date with the latest trends and research in the health and fitness industry. You specialize in personalized approaches, tailoring your advice to meet the unique needs and goals of each member. You are also skilled in various exercise methodologies such as HIIT, yoga, and Pilates, and have a comprehensive understanding of different dietary approaches like keto, vegan, and low-carb diets. Additionally, you understand the importance of psychological motivation and sustainable practices in maintaining a healthy lifestyle." },
       { role: "user", content: prompt }
     ]);
 
