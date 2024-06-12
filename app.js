@@ -1,5 +1,5 @@
 const sync = require('./models/sync');
-sync();
+//sync();
 const express = require('express');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
@@ -16,14 +16,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// app.use('/sales', checkAuth);
-// app.use('/sales', saleRouter);
-// app.use('/members', memberRouter);
-// app.use('/images', imageRouter);
-app.use('/muscleImages', muscleImageRouter);
 app.use('/ai', openai);
-//app.use('/muscleImages', muscleImageRouter);
-//app.use('/members', memberRouter);
 app.use('/muscle-image', muscleImageRouter);
 app.use('/crawler', crawlerRouter);
 
@@ -31,5 +24,6 @@ app.use((_, res) => {
   res.status(404).json({ success: false, token: '', message: '요청이 잘못됨' });
 });
 app.listen(port, () => {
+  console.log(`process.cwd(): ${process.cwd()}`)
   console.log(`Server is running on http://localhost:${port}`);
 });
