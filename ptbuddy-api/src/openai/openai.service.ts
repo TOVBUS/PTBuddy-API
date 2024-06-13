@@ -19,7 +19,7 @@ export class OpenaiService {
     );
   }
 
-  async generateRoutine(prompt: string): Promise<string[]> {
+  async generateResponse(prompt: string): Promise<string[]> {
     const result = await this.client.getChatCompletions(this.deploymentId, [
       {
         role: 'system',

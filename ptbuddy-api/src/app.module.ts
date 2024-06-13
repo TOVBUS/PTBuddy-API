@@ -4,6 +4,7 @@ import { ActivityModule } from './activity/activity.module';
 import { RoutineModule } from './routine/routine.module';
 import { OpenaiModule } from './openai/openai.module';
 import { DatabaseModule } from './database/database.module';
+import { MealModule } from './meal/meal.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { DatabaseModule } from './database/database.module';
     DatabaseModule,
     RoutineModule,
     OpenaiModule,
+    MealModule,
   ],
 })
 export class AppModule {}
