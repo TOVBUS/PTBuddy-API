@@ -16,8 +16,7 @@
     "mysql": "^2.18.1",
     "mysql2": "^3.10.0",
     "openai": "^4.50.0",
-    "sequelize": "^6.37.3",
-    "sequelize-cli": "^6.6.2"
+    "sequelize": "^6.37.3"
   },
   "name": "ptbuddy-api",
   "version": "1.0.0",
@@ -28,5 +27,8 @@
   },
   "author": "",
   "license": "ISC",
-  "keywords": []
+  "keywords": [],
+  "devDependencies": {
+    "sequelize-cli": "^6.6.2"
+  }
 }

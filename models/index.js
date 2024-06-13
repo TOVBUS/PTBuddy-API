@@ -10,17 +10,13 @@ const db = {};
 
 const sequelize = new Sequelize(config.database, config.username, config.password, config);
 
-// const User = require('./user');
-// const Sale = require('./sale');
-// db.User = User;
-// db.Sale = Sale;
-// User.init(sequelize);
-// Sale.init(sequelize);
-// Sale.associate(db);
-
 const Activity = require('./activity');
 db.Activity = Activity;
 Activity.init(sequelize);
+
+const ActivityRoutine = require('./activityRoutine');
+db.ActivityRoutine = ActivityRoutine;
+ActivityRoutine.init(sequelize);
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

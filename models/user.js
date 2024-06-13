@@ -4,6 +4,11 @@ class User extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
+        userId: {
+          type: Sequelize.UUID,
+          defaultValue: Sequelize.UUIDV4,
+          primaryKey: true,
+        },
         userName: {
           type: Sequelize.STRING(50),
           allowNull: false,
@@ -23,14 +28,10 @@ class User extends Sequelize.Model {
         timestamps: true,
         paranoid: true,
         modelName: 'User',
-        tableName: 'user',
+        tableName: 'users',
       }
     );
   }
-
-  // static associate(db) {
-  //   db.User.hasMany(db.Sale, { foreignKey: 'userID', sourceKey: 'id' });
-  // }
 }
 
 module.exports = User;
