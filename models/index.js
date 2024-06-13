@@ -10,27 +10,17 @@ const db = {};
 
 const sequelize = new Sequelize(config.database, config.username, config.password, config);
 
-// 현재 작업 디렉토리를 기준으로 models 디렉토리 경로 설정
-const modelsDirectory = path.join(process.cwd(), 'models');
+// const User = require('./user');
+// const Sale = require('./sale');
+// db.User = User;
+// db.Sale = Sale;
+// User.init(sequelize);
+// Sale.init(sequelize);
+// Sale.associate(db);
 
-fs
-  .readdirSync(modelsDirectory)
-  .filter(file => {
-    return (file.indexOf('.') !== 0) && (file.slice(-3) === '.js');
-  })
-  .forEach(file => {
-    const model = require(path.join(modelsDirectory, file));
-    if (typeof model.init === 'function') {
-      model.init(sequelize);
-    }
-    db[model.name] = model;
-  });
-
-Object.keys(db).forEach(modelName => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
-  }
-});
+const Activity = require('./activity');
+db.Activity = Activity;
+Activity.init(sequelize);
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

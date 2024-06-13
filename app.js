@@ -1,5 +1,4 @@
-const sync = require('./models/sync');
-//sync();
+// const sync = require('./models/sync');
 const express = require('express');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
