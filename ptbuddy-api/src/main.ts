@@ -5,5 +5,6 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   await app.listen(3000);
   console.log(`Server is running on: ${await app.getUrl()}`);
+  console.log(`${process.env.DB_HOST}`);
 }
 bootstrap();

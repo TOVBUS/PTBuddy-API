@@ -15,7 +15,8 @@ export class RoutineService {
   }
 
   async createBulk(routines: Partial<Routine>[]): Promise<Routine[]> {
-    return this.routineRepository.save(routines);
+    const savedRoutines = await this.routineRepository.save(routines);
+    return savedRoutines;
   }
 
   async findAll(): Promise<Routine[]> {
